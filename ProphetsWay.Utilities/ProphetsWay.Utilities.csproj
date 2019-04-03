@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net45;net451;net452;net46;net461;net471;netstandard2.0;netcoreapp2.2;netcoreapp2.1;netcoreapp2.0;</TargetFrameworks>
+    <RootNamespace>ProphetsWay.Utilities</RootNamespace>
+    <AssemblyName>ProphetsWay.Utilities</AssemblyName>
+    <ApplicationIcon />
+    <Win32Resource />
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <SignAssembly>false</SignAssembly>
+    <Authors>G. Gordon Nasseri</Authors>
+    <Company>ProphetsWay</Company>
+    <Description>
+      A collection of small utility classes I've made over the years.
+
+      Go to https://github.com/ProphetManX/ProphetsWay.Utilities for more information.
+    </Description>
+
+    <!-- Assembly Override Properties -->
+    <PackageRequireLicenseAcceptance />
+    <PackageId />
+    <Version />
+    <Authors />
+    <Company />
+    <Product />
+
+    <Copyright />
+    <PackageLicenseUrl />
+    <PackageProjectUrl />
+    <PackageIconUrl />
+    <RepositoryUrl />
+    <RepositoryType />
+    <PackageTags />
+    <PackageReleaseNotes />
+    <NeutralLanguage />
+    <AssemblyVersion />
+    <FileVersion />
+    <InformationalVersion />
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ProphetsWay.Logger" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>
