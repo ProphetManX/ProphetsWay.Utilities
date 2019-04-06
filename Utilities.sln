@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProphetsWay.Utilities", "ProphetsWay.Utilities\ProphetsWay.Utilities.csproj", "{EE176BE7-8E2F-41B2-90F6-FDE3C5DFE01D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProphetsWay.Utilities", "ProphetsWay.Utilities\ProphetsWay.Utilities.csproj", "{EE176BE7-8E2F-41B2-90F6-FDE3C5DFE01D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProphetsWay.Utilities.Tests", "ProphetsWay.Utilities.Tests\ProphetsWay.Utilities.Tests.csproj", "{E357CBCB-3C80-47CA-A869-6C396CA55AF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{EE176BE7-8E2F-41B2-90F6-FDE3C5DFE01D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE176BE7-8E2F-41B2-90F6-FDE3C5DFE01D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE176BE7-8E2F-41B2-90F6-FDE3C5DFE01D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E357CBCB-3C80-47CA-A869-6C396CA55AF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E357CBCB-3C80-47CA-A869-6C396CA55AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E357CBCB-3C80-47CA-A869-6C396CA55AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E357CBCB-3C80-47CA-A869-6C396CA55AF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

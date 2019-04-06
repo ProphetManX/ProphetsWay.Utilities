@@ -35,8 +35,6 @@ namespace ProphetsWay.Utilities
 	{
 		private const int BUFFER_SIZE = 1024*1024*128;
 
-		private const string INVALID_HASH_TYPE = @"Improper value of HashType was used.";
-
 		public static string GenerateHash(this Stream stream, HashTypes hashType)
 		{
 			var worker = new HashWorker(hashType);
@@ -129,7 +127,7 @@ namespace ProphetsWay.Utilities
 						break;
 
 					default:
-						throw new InvalidEnumArgumentException(INVALID_HASH_TYPE);
+						throw new InvalidEnumArgumentException("Improper value of HashType was used.");
 				}
 			}
 

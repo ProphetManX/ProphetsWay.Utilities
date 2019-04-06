@@ -15,7 +15,7 @@ namespace ProphetsWay.Utilities
         {
             return dictionary.ContainsKey(key)
                     ? GetValue<T>(dictionary[key])
-                    : default(T);
+                    : default;
         }
 
         /// <summary>

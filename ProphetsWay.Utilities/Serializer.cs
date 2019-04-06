@@ -8,28 +8,6 @@ namespace ProphetsWay.Utilities
 {
 	public static class Serializer 
 	{
-		public static void SerializeAsToFile(this object objectToSerialize, string targetFileName)
-		{
-			using (var ms = objectToSerialize.SerializeAsByteArr())
-			using (var s = File.Open(targetFileName, FileMode.Create))
-			{
-				ms.WriteTo(s);
-				s.Flush();
-				s.Close();
-			}
-		}
-
-		public static string SerializeAsXml(this object objectToSerialize)
-		{
-			var formatter = new XmlSerializer(objectToSerialize.GetType());
-			var s = new StringWriter();
-			var x = new XmlTextWriter(s);
-
-			formatter.Serialize(x, objectToSerialize);
-
-			return s.ToString();
-		}
-
 		public static MemoryStream SerializeAsByteArr(this string stringToSerialize)
 		{
 			var bytes = Encoding.UTF8.GetBytes(stringToSerialize);
@@ -49,16 +27,27 @@ namespace ProphetsWay.Utilities
 			return s;
 		}
 
-		public static T DeserializeFromXml<T>(this XmlDocument xmlDocument)
+		public static T DeserializeFromByteArr<T>(this Stream binaryStream)
 		{
-			var xmlBytes = xmlDocument.OuterXml.SerializeAsByteArr();
-			var formatter = new XmlSerializer(typeof(T));
-			var obj = (T)formatter.Deserialize(xmlBytes);
+			var formatter = new BinaryFormatter();
+			var obj = (T)formatter.Deserialize(binaryStream);
+			binaryStream.Close();
 
 			return obj;
 		}
 
-		public static T DeserializeFromFile<T>(string targetFileName)
+        public static void SerializeAsByteArrToFile(this object objectToSerialize, string targetFileName)
+        {
+            using (var ms = objectToSerialize.SerializeAsByteArr())
+            using (var s = File.Open(targetFileName, FileMode.Create))
+            {
+                ms.WriteTo(s);
+                s.Flush();
+                s.Close();
+            }
+        }
+
+		public static T DeserializeFromByteArrInFile<T>(string targetFileName)
 		{
 			T obj;
 
@@ -68,11 +57,22 @@ namespace ProphetsWay.Utilities
 			return obj;
 		}
 
-		public static T DeserializeFromByteArr<T>(this Stream binaryStream)
+        public static string SerializeAsXml(this object objectToSerialize)
+        {
+            var formatter = new XmlSerializer(objectToSerialize.GetType());
+            var s = new StringWriter();
+            var x = new XmlTextWriter(s);
+
+            formatter.Serialize(x, objectToSerialize);
+
+            return s.ToString();
+        }
+
+        public static T DeserializeFromXml<T>(this XmlDocument xmlDocument)
 		{
-			var formatter = new BinaryFormatter();
-			var obj = (T)formatter.Deserialize(binaryStream);
-			binaryStream.Close();
+			var xmlBytes = xmlDocument.OuterXml.SerializeAsByteArr();
+			var formatter = new XmlSerializer(typeof(T));
+			var obj = (T)formatter.Deserialize(xmlBytes);
 
 			return obj;
 		}
