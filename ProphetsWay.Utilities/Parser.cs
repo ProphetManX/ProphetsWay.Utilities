@@ -70,106 +70,71 @@ namespace ProphetsWay.Utilities
 			}
 		}
 
-		private static object ParseStringAsType(string input, Type cType)
-		{
-			var conversionType = cType;
-			object retval = null;
-			var objType = conversionType;
-			object obj = null;
+        private static object ParseStringAsType(string input, Type cType)
+        {
+            object retval = null;
+            object obj = null;
+            var objType = cType;
 
-			DateTime dt;
-			TimeSpan ts;
-			int i;
-			ushort u;
-			long l;
-			short s;
-			double d;
-            float f;
 
-            if (conversionType.IsGenericType && conversionType.GetGenericTypeDefinition() == typeof(Nullable<>))
-                objType = new NullableConverter(conversionType).UnderlyingType;
+            if (cType.IsGenericType && cType.GetGenericTypeDefinition() == typeof(Nullable<>))
+                objType = new NullableConverter(cType).UnderlyingType;
 
-            if (conversionType == typeof(DateTime?))
-				if (DateTime.TryParse(input, out dt))
-					obj = dt;
+            if (cType == typeof(DateTime) || cType == typeof(DateTime?))
+                if (DateTime.TryParse(input, out DateTime dt))
+                    obj = dt;
 
-			if (conversionType == typeof(DateTime))
-				if (DateTime.TryParse(input, out dt))
-					obj = dt;
+            if (cType == typeof(TimeSpan) || cType == typeof(TimeSpan?))
+                if (TimeSpan.TryParse(input, out TimeSpan ts))
+                    obj = ts;
 
-			if (conversionType == typeof(TimeSpan?))
-				if (TimeSpan.TryParse(input, out ts))
-					obj = ts;
+            if (cType == typeof(IPAddress))
+                if (IPAddress.TryParse(input, out IPAddress ip))
+                    obj = ip;
 
-			if (conversionType == typeof(TimeSpan))
-				if (TimeSpan.TryParse(input, out ts))
-					obj = ts;
+            if (cType == typeof(short) || cType == typeof(short?))
+                if (short.TryParse(input, out short s))
+                    obj = s;
 
-			if (conversionType == typeof(IPAddress))
-				if (IPAddress.TryParse(input, out IPAddress ip))
-					obj = ip;
+            if (cType == typeof(ushort) || cType == typeof(ushort?))
+                if (ushort.TryParse(input, out ushort us))
+                    obj = us;
 
-			if (conversionType == typeof(short?))
-				if (short.TryParse(input, out s))
-					obj = s;
+            if (cType == typeof(int) || cType == typeof(int?))
+                if (int.TryParse(input, out int i))
+                    obj = i;
 
-			if (conversionType == typeof(short))
-				if (short.TryParse(input, out s))
-					obj = s;
+            if (cType == typeof(uint) || cType == typeof(uint?))
+                if (uint.TryParse(input, out uint ui))
+                    obj = ui;
 
-			if (conversionType == typeof(ushort))
-				if (ushort.TryParse(input, out u))
-					obj = u;
+            if (cType == typeof(long) || cType == typeof(long?))
+                if (long.TryParse(input, out long l))
+                    obj = l;
 
-			if (conversionType == typeof(ushort?))
-				if (ushort.TryParse(input, out u))
-					obj = u;
+            if (cType == typeof(ulong) || cType == typeof(ulong?))
+                if (ulong.TryParse(input, out ulong ul))
+                    obj = ul;
 
-			if (conversionType == typeof(int?))
-				if (int.TryParse(input, out i))
-					obj = i;
+            if (cType == typeof(double) || cType == typeof(double?))
+                if (double.TryParse(input, out double d))
+                    obj = d;
 
-			if (conversionType == typeof(int))
-				if (int.TryParse(input, out i))
-					obj = i;
+            if (cType == typeof(float) || cType == typeof(float?))
+                if (float.TryParse(input, out float f))
+                    obj = f;
 
-			if (conversionType == typeof(long?))
-				if (long.TryParse(input, out l))
-					obj = l;
+            if (cType == typeof(bool))
+                if (bool.TryParse(input, out bool b))
+                    obj = b;
 
-			if (conversionType == typeof(long))
-				if (long.TryParse(input, out l))
-					obj = l;
+            if (cType == typeof(string))
+                obj = input;
 
-			if (conversionType == typeof(double?))
-				if (double.TryParse(input, out d))
-					obj = d;
+            if (obj != null)
+                retval = Convert.ChangeType(obj, objType);
 
-			if (conversionType == typeof(double))
-				if (double.TryParse(input, out d))
-					obj = d;
-
-			if (conversionType == typeof(float?))
-				if (float.TryParse(input, out f))
-					obj = f;
-
-			if (conversionType == typeof(float))
-				if (float.TryParse(input, out f))
-					obj = f;
-
-			if (conversionType == typeof(bool))
-				if (bool.TryParse(input, out bool b))
-					obj = b;
-
-			if (conversionType == typeof(string))
-				obj = input;
-
-			if (obj != null)
-				retval = Convert.ChangeType(obj, objType);
-
-			return retval;
-		}
-
-		
+            return retval;
+        }
 	}
 }
