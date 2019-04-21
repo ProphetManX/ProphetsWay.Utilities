@@ -124,7 +124,7 @@ namespace ProphetsWay.Utilities
                 if (float.TryParse(input, out float f))
                     obj = f;
 
-            if (cType == typeof(bool))
+            if (cType == typeof(bool) || cType == typeof(bool?))
                 if (bool.TryParse(input, out bool b))
                     obj = b;
 
